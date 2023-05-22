@@ -1,0 +1,48 @@
+﻿<Page x:Class="Test.Pages.PageBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Test.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageBook">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBox Name="BookSearch"
+                         Width="500"
+                         Height="35"
+                         Margin="5"/>
+                <ListBox Name="ListBook"
+                         Background="Transparent"
+                         Width="450" BorderBrush="Transparent">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ListBoxItem BorderBrush="Black"
+                                         Background="White"                                      
+                                         Width="900">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Name="StringImage" Visibility="Hidden"
+                                               Text="{Binding ImagePath}"/>
+                                    <Image Width="150" Source="{Binding Text, ElementName=StringImage}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Id}"/>
+                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Author}"/>
+                                        <TextBlock Text="{Binding Category_id}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Name="EditBook" Click="EditBook_Click" Style="{StaticResource MainButton}">Отредактировать</Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,46 @@
+﻿Создайте модель данных для пользователя:
+
+public class User
+{
+    public string Username { get; set; }
+    public string Password { get; set; }
+}
+
+Создайте класс, отвечающий за проверку учетных данных пользователя:
+
+public class AuthenticationService
+{
+    private List<User> users = new List<User>
+    {
+        new User { Username = "admin", Password = "password" },
+        new User { Username = "user", Password = "123456" }
+    };
+
+    public bool Authenticate(string username, string password)
+    {
+        User user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        return user != null;
+    }
+}
+
+
+В окне (Window) вашего приложения добавьте элементы пользовательского интерфейса для ввода имени пользователя и пароля, а также кнопку для выполнения входа.
+Обработайте событие нажатия кнопки входа и выполните проверку аутентификации:
+
+private void LoginButton_Click(object sender, RoutedEventArgs e)
+{
+    string username = UsernameTextBox.Text;
+    string password = PasswordTextBox.Password;
+
+    AuthenticationService authService = new AuthenticationService();
+    bool isAuthenticated = authService.Authenticate(username, password);
+
+    if (isAuthenticated)
+    {
+
+    }
+    else
+    {
+
+    }
+}
